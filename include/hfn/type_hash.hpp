@@ -4,7 +4,7 @@
 #include <string_view>
 #include <type_traits>
 
-#include "fixed_string.hpp"
+#include "cxstring.hpp"
 // Defines required
 #include "detail/type_name_ex.hpp"
 
@@ -15,7 +15,7 @@ namespace detail
 template <typename T>
 constexpr auto type_name()
 {
-  return hfn::fixed_string{CPPHASH_FUNC_NAME}.substring(CPPHASH_FUNC_START, CPPHASH_FUNC_END);
+  return hfn::cxstring{CPPHASH_FUNC_NAME}.substring(CPPHASH_FUNC_START, CPPHASH_FUNC_END);
 }
 
 template <typename T>
