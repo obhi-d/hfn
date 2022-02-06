@@ -40,7 +40,7 @@ public:
 
   constexpr std::uint32_t fnv1a_hash() const noexcept
   {
-    return compute_fnv1a(p, sz);
+    return compute_fnv1a(p, static_cast<std::int32_t>(sz));
   }
 
   inline constexpr operator std::string_view() const noexcept
