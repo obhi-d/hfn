@@ -37,6 +37,6 @@ constexpr std::string_view type_name()
 template <typename T>
 constexpr std::uint32_t type_hash()
 {
-  return type_hash<detail::cvrt<T>>();
+  return detail::type_hash<detail::cvrt<T>>();
 }
 } // namespace hfn

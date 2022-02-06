@@ -18,6 +18,8 @@ TEST_CASE("Asserts", "[asserts]")
   static_assert(sizeof(hfn::uhash128_t) == 16, "Size is incorrect");
   CHECK(hfn::digest<std::uint64_t>(0) == "0");
   CHECK(hfn::type_name<type_name_test>() == "class type_name_test");
+  constexpr std::uint32_t cth = hfn::type_hash<std::string_view>();
+  static_assert(cth == 787592100);
   CHECK(hfn::digest<std::uint64_t>(0xff64ffaadd41) == "1anlqvjcv7");
 }
 
