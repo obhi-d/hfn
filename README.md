@@ -1,1 +1,3 @@
-# lib_template
+# hfn
+
+Hash functions and utility library.

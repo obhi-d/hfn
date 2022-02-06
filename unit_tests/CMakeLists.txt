@@ -1,6 +1,4 @@
-
 include(FetchContent)
-
 
 FetchContent_Declare(
   Catch2
@@ -13,7 +11,7 @@ FetchContent_MakeAvailable(Catch2)
 add_executable(${PROJECT_NAME}_validity
  "main.cpp")
 
-target_link_libraries(${PROJECT_NAME}_validity acl::acl Catch2::Catch2)
+target_link_libraries(${PROJECT_NAME}_validity ${PROJECT_NAME}::${PROJECT_NAME} Catch2::Catch2)
 add_test(${PROJECT_NAME}_validity ${PROJECT_NAME}_validity)
 target_compile_features(${PROJECT_NAME}_validity PRIVATE cxx_std_20)
 
