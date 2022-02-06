@@ -38,6 +38,11 @@ public:
     return compute_murmur3(seed);
   }
 
+  constexpr std::uint32_t fnv1a_hash() const noexcept
+  {
+    return compute_fnv1a(p, sz);
+  }
+
   inline constexpr operator std::string_view() const noexcept
   {
     return std::string_view(p, sz);
