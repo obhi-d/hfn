@@ -84,14 +84,14 @@ private:
   std::uint64_t secret[4];
 };
 
-std::uint64_t compute64(void const* key, std::size_t len)
+inline std::uint64_t compute64(void const* key, std::size_t len)
 {
   hash<std::uint64_t> h;
   h(key, len);
   return h();
 }
 
-std::uint32_t compute32(void const* key, std::size_t len)
+inline std::uint32_t compute32(void const* key, std::size_t len)
 {
   hash<std::uint32_t> h;
   h(key, len);
