@@ -14,8 +14,8 @@ uhash128_t murmur3_update(uhash128_t prev, void const* key, std::size_t len)
   std::uint64_t h1 = std::get<0>(prev);
   std::uint64_t h2 = std::get<1>(prev);
 
-  const std::uint64_t c1 = BIG_CONSTANT(0x87c37b91114253d5);
-  const std::uint64_t c2 = BIG_CONSTANT(0x4cf5ad432745937f);
+  constexpr std::uint64_t c1 = BIG_CONSTANT(0x87c37b91114253d5);
+  constexpr std::uint64_t c2 = BIG_CONSTANT(0x4cf5ad432745937f);
 
   //----------
   // body
