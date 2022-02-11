@@ -29,7 +29,7 @@ public:
 
   HFN_FORCE_INLINE auto operator()(void const* key, std::size_t len) noexcept
   {
-    detail::murmur3_update(value, key, len);
+    value = detail::murmur3_update(value, key, len);
     length += len;
     return (*this)();
   }
@@ -49,14 +49,14 @@ private:
 inline uhash128_t compute128(void const* key, std::size_t len) noexcept
 {
   uhash128_t value = detail::murmur3_default_seed<uhash128_t>::value;
-  detail::murmur3_update(value, key, len);
+  value            = detail::murmur3_update(value, key, len);
   return detail::murmur3_finalize(value, len);
 }
 
 inline std::uint32_t compute32(void const* key, std::size_t len) noexcept
 {
   std::uint32_t value = detail::murmur3_default_seed<std::uint32_t>::value;
-  detail::murmur3_update(value, key, len);
+  value               = detail::murmur3_update(value, key, len);
   return detail::murmur3_finalize(value, len);
 }
 

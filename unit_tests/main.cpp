@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "hfn/config.hpp"
+#include "hfn/cxstring.hpp"
 #include "hfn/digest.hpp"
 #include "hfn/fnv1a.hpp"
 #include "hfn/murmur3.hpp"
@@ -39,13 +40,13 @@ TEST_CASE("Murmur3", "[murmur]")
   hash128(text.c_str(), text.length());
   CHECK(hash128() == hfn::murmur3::compute128(text.c_str(), text.length()));
 
-  hash32(first.c_str(), first.length());
-  hash32(second.c_str(), second.length());
-  CHECK(hash32() == hfn::murmur3::compute32(combined.c_str(), combined.length()));
+  std::string_view conflict1 = "vertexColor";
+  std::string_view conflict2 = "userDefined";
+  CHECK(hfn::murmur3::compute32(conflict2.data(), conflict2.length()) !=
+        hfn::murmur3::compute32(conflict1.data(), conflict1.length()));
 
-  hash128(first.c_str(), first.length());
-  hash128(second.c_str(), second.length());
-  CHECK(hash128() == hfn::murmur3::compute128(combined.c_str(), combined.length()));
+  hfn::cxstring s = "fixdStrinTest";
+  CHECK(s.hash() == hfn::murmur3::compute32(s.data(), s.size()));
 }
 
 TEST_CASE("Fnv1a", "[fnv1a]")

@@ -89,13 +89,13 @@ struct murmur3_default_seed;
 template <>
 struct murmur3_default_seed<std::uint32_t>
 {
-  static constexpr std::uint32_t value = 0x54F9CA4F;
+  static constexpr std::uint32_t value = 0;
 };
 
 template <>
 struct murmur3_default_seed<uhash128_t>
 {
-  static constexpr uhash128_t value = uhash128_t(0x54F9CA4F, 0x3);
+  static constexpr uhash128_t value = uhash128_t(0, 0);
 };
 
 } // namespace hfn::detail
